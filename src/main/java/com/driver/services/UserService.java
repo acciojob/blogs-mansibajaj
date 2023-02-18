@@ -1,4 +1,6 @@
-package com.driver.services;
+
+
+package  com.driver.services;
 
 import com.driver.models.*;
 import com.driver.repositories.UserRepository;
@@ -23,11 +25,11 @@ public class UserService {
         userRepository3.deleteById(userId);
     }
 
-    public User updateUser(Integer id, String password) throws Exception {
+    public User updateUser(Integer id, String password)  {
         User user;
-        if(!userRepository3.findById(id).isPresent()) {
-            throw new Exception();
-        }
+//        if(!userRepository3.findById(id).isPresent()) {
+//           throw new Exception();
+//        }
         user = userRepository3.findById(id).get();
         user.setPassword(password);
         userRepository3.save(user);

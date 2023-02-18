@@ -22,21 +22,22 @@ public class BlogService {
     @Autowired
     UserRepository userRepository1;
 
-    public Blog createAndReturnBlog(Integer userId, String title, String content) throws Exception {
+    public Blog createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
-
-        if(!userRepository1.findById(userId).isPresent()){
-            throw new Exception();
-        }
+//
+//        if(!userRepository1.findById(userId).isPresent()){
+//            throw new Exception();
+//        }
         User user = userRepository1.findById(userId).get();
-        Blog blog = new Blog((org.apache.catalina.User) user,title,content);
+        Blog blog = new Blog(user, title, content);
+        blog.setPubDate(new Date());
         userRepository1.save(user); //Blog saved in repo by cascading
         user.getBlogList().add(blog);
         return blog;
 
     }
 
-    public void deleteBlog(int blogId){
+    public void deleteBlog(int blogId) {
         //delete blog and corresponding images
         blogRepository1.deleteById(blogId);
     }
