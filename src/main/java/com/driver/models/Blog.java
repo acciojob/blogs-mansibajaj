@@ -1,6 +1,5 @@
 package com.driver.models;
 
-import org.apache.catalina.User;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
